@@ -44,6 +44,7 @@ function WorkerQ(activeJobsLimit) {
       startAnotherJob();
     }
   };
+
   this.start = function() {
     running = true;
 
@@ -54,11 +55,22 @@ function WorkerQ(activeJobsLimit) {
   this.stop = function() {
     running = false;
   };
+
   this.jobSucceeds = function(cb) {
     jobSuccessCb = cb;
   };
   this.jobFails = function(cb) {
     jobFailureCb = cb;
+  };
+
+  this.jobsTotal = function() {
+    return jobs.length;
+  };
+  this.jobsRunning = function() {
+    return currentJobs;
+  };
+  this.jobsPending = function() {
+    return jobs.length - currentJobs;
   };
 }
 
