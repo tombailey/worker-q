@@ -12,22 +12,6 @@ function WorkerQ(activeJobsLimit) {
   var jobSuccessCb;
   var jobFailureCb;
 
-  var successCb = function() {
-    currentJobs--;
-    if (shouldStartAnotherJob()) {
-      startAnotherJob();
-    }
-
-    jobSuccessCb.apply(null, arguments);
-  };
-  var failCb = function() {
-    currentJobs--;
-    if (shouldStartAnotherJob()) {
-      startAnotherJob();
-    }
-
-    jobFailureCb.apply(null, arguments);
-  };
   var shouldStartAnotherJob = function() {
     return running && currentJobs < activeJobsLimit && jobs.length > 0;
   };
@@ -37,6 +21,21 @@ function WorkerQ(activeJobsLimit) {
     // errors?
     setTimeout(job, 0, successCb, failCb);
     currentJobs++;
+  };
+
+  var jobComplete = function() {
+    currentJobs--;
+    if (shouldStartAnotherJob()) {
+      startAnotherJob();
+    }
+  };
+  var successCb = function() {
+    jobComplete();
+    jobSuccessCb.apply(null, arguments);
+  };
+  var failCb = function() {
+    jobComplete();
+    jobFailureCb.apply(null, arguments);
   };
 
   this.add = function(callback) {
