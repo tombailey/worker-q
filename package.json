@@ -1,6 +1,6 @@
 {
   "name": "worker-q",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Queue jobs (in the form of functions) for async execution",
   "main": "lib.js",
   "author": {
