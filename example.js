@@ -1,23 +1,4 @@
-# worker q
-
-## Introduction
-
-This is a Node.js based module for queuing asynchronous work.
-
-
-Disclaimer: Please don't share WorkerQ objects across threads; actions are not
-designed to be thread safe!
-
-## Dependencies
-
-None (it uses setTimeout() for async)
-
-## Examples
-
-Do an npm install worker-q.
-
-```javascript
-var WorkerQ = require("worker-q");
+var WorkerQ = require("./lib.js");
 
 var waitThenCallback = function(wait, callback) {
   setTimeout(callback, wait, wait);
@@ -54,8 +35,3 @@ myAwesomeQueue.jobFails(function(reason) {
 myAwesomeQueue.add(myAwesomeWork.shift());
 myAwesomeQueue.add(myAwesomeWork.shift());
 myAwesomeQueue.start();
-```
-
-## License
-
-Apache 2

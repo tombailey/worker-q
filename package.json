@@ -1,0 +1,22 @@
+{
+  "name": "worker-q",
+  "version": "1.0.0",
+  "description": "Queue jobs (in the form of functions) for async execution",
+  "main": "lib.js",
+  "author": {
+    "name": "TomBailey",
+    "email": "inbox@tombailey.me"
+  },
+  "dependencies": {},
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tombailey/worker-q.git"
+  },
+  "keywords": [
+    "async",
+    "queue",
+    "q",
+    "worker"
+  ]
+}
